@@ -1,0 +1,921 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6FFA4A21-D17B-4FE3-B5CC-AB3D34ECD197}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RemindMe</RootNamespace>
+    <AssemblyName>RemindMe</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>img\.ico_icons\RemindMeIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>External DLL's\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetZip, Version=1.13.5.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.13.5\lib\net40\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FSManager, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Visual Studio 2015\Projects\FSManager\FSManager\bin\Debug\FSManager.dll</HintPath>
+    </Reference>
+    <Reference Include="GFramework">
+      <HintPath>External DLL's\GFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="GFramework.WinForm">
+      <HintPath>External DLL's\GFramework.WinForm.dll</HintPath>
+    </Reference>
+    <Reference Include="Gma.System.MouseKeyHook, Version=5.6.130.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MouseKeyHook.5.6.0\lib\net40\Gma.System.MouseKeyHook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlRenderer, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>External DLL's\HtmlRenderer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlRenderer.WinForms, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>External DLL's\HtmlRenderer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Deployment.WindowsInstaller">
+      <HintPath>..\Microsoft.Deployment.WindowsInstaller.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ExtendedLinguisticServices, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Sensors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.Sensors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OSVersionInfo, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>External DLL's\OSVersionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.112.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.112.0\lib\net45\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.112.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.112.0\lib\net45\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.112.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.112.0\lib\net45\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ComboboxItems\ComboBoxItem.cs" />
+    <Compile Include="ComboboxItems\ComboBoxItemManager.cs" />
+    <Compile Include="Forms\Old forms\ExceptionPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Old forms\ExceptionPopup.Designer.cs">
+      <DependentUpon>ExceptionPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialAdvancedReminderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialAdvancedReminderForm.Designer.cs">
+      <DependentUpon>MaterialAdvancedReminderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialExceptionPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialExceptionPopup.Designer.cs">
+      <DependentUpon>MaterialExceptionPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialForm1.designer.cs">
+      <DependentUpon>MaterialForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialPopup.Designer.cs">
+      <DependentUpon>MaterialPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialRemindMeBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialRemindMeBox.Designer.cs">
+      <DependentUpon>MaterialRemindMeBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialRemindMeImporter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialRemindMeImporter.Designer.cs">
+      <DependentUpon>MaterialRemindMeImporter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialRemindMePrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialRemindMePrompt.Designer.cs">
+      <DependentUpon>MaterialRemindMePrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialTimerCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialTimerCheck.Designer.cs">
+      <DependentUpon>MaterialTimerCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialTimerPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialTimerPopup.Designer.cs">
+      <DependentUpon>MaterialTimerPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialWhatsNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\MaterialWhatsNew.Designer.cs">
+      <DependentUpon>MaterialWhatsNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\RemindMeMaterialMessageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MaterialForms\RemindMeMaterialMessageForm.Designer.cs">
+      <DependentUpon>RemindMeMaterialMessageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Old forms\TimerCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Old forms\TimerCheck.Designer.cs">
+      <DependentUpon>TimerCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Old forms\WhatsNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Old forms\WhatsNew.Designer.cs">
+      <DependentUpon>WhatsNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NonFlickerPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Other classes\EmbeddedAssembly.cs" />
+    <Compile Include="Other classes\FlashWindowHelper.cs" />
+    <Compile Include="Forms\Old forms\AdvancedReminderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Old forms\AdvancedReminderForm.Designer.cs">
+      <DependentUpon>AdvancedReminderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Old forms\Popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Old forms\Popup.Designer.cs">
+      <DependentUpon>Popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Old forms\RemindMeBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Old forms\RemindMeBox.Designer.cs">
+      <DependentUpon>RemindMeBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Old forms\RemindMeImporter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Old forms\RemindMeImporter.Designer.cs">
+      <DependentUpon>RemindMeImporter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Old forms\RemindMeOptionPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Old forms\RemindMeOptionPrompt.Designer.cs">
+      <DependentUpon>RemindMeOptionPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Old forms\RemindMePrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Old forms\RemindMePrompt.Designer.cs">
+      <DependentUpon>RemindMePrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Old forms\TimerPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Old forms\TimerPopup.Designer.cs">
+      <DependentUpon>TimerPopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other classes\HttpCondition.cs" />
+    <Compile Include="Other classes\MaterialMessageFormManager.cs" />
+    <Compile Include="Other classes\MessageFormManager.cs" />
+    <Compile Include="Forms\Old forms\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Old forms\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Old forms\RemindMeMessageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Old forms\RemindMeMessageForm.Designer.cs">
+      <DependentUpon>RemindMeMessageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Other classes\IOVariables.cs" />
+    <Compile Include="Other classes\MyToolStripMenuRenderer.cs" />
+    <Compile Include="Other classes\RemindMeUpdater.cs" />
+    <Compile Include="Other classes\TimerItem.cs" />
+    <Compile Include="Other classes\UpdateInformation.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCInfo.Designer.cs">
+      <DependentUpon>MUCInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCHTTPRequest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCHTTPRequest.Designer.cs">
+      <DependentUpon>MUCHTTPRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\Old user controls\Advanced Reminder User controls\AVR_UCBatch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\Old user controls\Advanced Reminder User controls\AVR_UCBatch.Designer.cs">
+      <DependentUpon>AVR_UCBatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\Old user controls\Advanced Reminder User controls\AVR_UCFiles.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\Old user controls\Advanced Reminder User controls\AVR_UCFiles.Designer.cs">
+      <DependentUpon>AVR_UCFiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\Old user controls\Advanced Reminder User controls\AVR_UCGeneral.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\Old user controls\Advanced Reminder User controls\AVR_UCGeneral.Designer.cs">
+      <DependentUpon>AVR_UCGeneral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MaterialRunningTimer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MaterialRunningTimer.Designer.cs">
+      <DependentUpon>MaterialRunningTimer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCDebugMode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCDebugMode.Designer.cs">
+      <DependentUpon>MUCDebugMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCImportExport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCImportExport.designer.cs">
+      <DependentUpon>MUCImportExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCNewReminder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCNewReminder.Designer.cs">
+      <DependentUpon>MUCNewReminder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCReminderItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCReminderItem.Designer.cs">
+      <DependentUpon>MUCReminderItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCReminders.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCReminders.Designer.cs">
+      <DependentUpon>MUCReminders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCResizePopup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCResizePopup.Designer.cs">
+      <DependentUpon>MUCResizePopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCSettings.Designer.cs">
+      <DependentUpon>MUCSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCSound.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCSound.Designer.cs">
+      <DependentUpon>MUCSound.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCSupport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCSupport.Designer.cs">
+      <DependentUpon>MUCSupport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCTheme.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCTheme.Designer.cs">
+      <DependentUpon>MUCTheme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCTimer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\MaterialUserControls\MUCTimer.Designer.cs">
+      <DependentUpon>MUCTimer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\Old user controls\RunningTimer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\Old user controls\RunningTimer.Designer.cs">
+      <DependentUpon>RunningTimer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCDebugMode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCDebugMode.Designer.cs">
+      <DependentUpon>UCDebugMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCImportExport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCImportExport.Designer.cs">
+      <DependentUpon>UCImportExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCNewReminder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCNewReminder.Designer.cs">
+      <DependentUpon>UCNewReminder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCReminderItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCReminderItem.Designer.cs">
+      <DependentUpon>UCReminderItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCReminders.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCReminders.Designer.cs">
+      <DependentUpon>UCReminders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCResizePopup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCResizePopup.Designer.cs">
+      <DependentUpon>UCResizePopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCSound.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCSound.Designer.cs">
+      <DependentUpon>UCSound.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCSupport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCSupport.Designer.cs">
+      <DependentUpon>UCSupport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCTheme.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCTheme.Designer.cs">
+      <DependentUpon>UCTheme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCTimer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCTimer.Designer.cs">
+      <DependentUpon>UCTimer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User controls\Old user controls\UCSettings.Designer.cs">
+      <DependentUpon>UCSettings.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\Old forms\AdvancedReminderForm.resx">
+      <DependentUpon>AdvancedReminderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Old forms\ExceptionPopup.resx">
+      <DependentUpon>ExceptionPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Old forms\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MaterialForms\MaterialAdvancedReminderForm.resx">
+      <DependentUpon>MaterialAdvancedReminderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MaterialForms\MaterialExceptionPopup.resx">
+      <DependentUpon>MaterialExceptionPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MaterialForms\MaterialForm1.resx">
+      <DependentUpon>MaterialForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MaterialForms\MaterialPopup.resx">
+      <DependentUpon>MaterialPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MaterialForms\MaterialRemindMeBox.resx">
+      <DependentUpon>MaterialRemindMeBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MaterialForms\MaterialRemindMeImporter.resx">
+      <DependentUpon>MaterialRemindMeImporter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MaterialForms\MaterialRemindMePrompt.resx">
+      <DependentUpon>MaterialRemindMePrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MaterialForms\MaterialTimerCheck.resx">
+      <DependentUpon>MaterialTimerCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MaterialForms\MaterialTimerPopup.resx">
+      <DependentUpon>MaterialTimerPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MaterialForms\MaterialWhatsNew.resx">
+      <DependentUpon>MaterialWhatsNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MaterialForms\RemindMeMaterialMessageForm.resx">
+      <DependentUpon>RemindMeMaterialMessageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Old forms\Popup.resx">
+      <DependentUpon>Popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Old forms\RemindMeBox.resx">
+      <DependentUpon>RemindMeBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Old forms\RemindMeImporter.resx">
+      <DependentUpon>RemindMeImporter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Old forms\RemindMeMessageForm.resx">
+      <DependentUpon>RemindMeMessageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Old forms\RemindMeOptionPrompt.resx">
+      <DependentUpon>RemindMeOptionPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Old forms\RemindMePrompt.resx">
+      <DependentUpon>RemindMePrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Old forms\TimerCheck.resx">
+      <DependentUpon>TimerCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Old forms\TimerPopup.resx">
+      <DependentUpon>TimerPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Old forms\WhatsNew.resx">
+      <DependentUpon>WhatsNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\MaterialUserControls\MUCHTTPRequest.resx">
+      <DependentUpon>MUCHTTPRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\MaterialUserControls\MUCInfo.resx">
+      <DependentUpon>MUCInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\Old user controls\Advanced Reminder User controls\AVR_UCBatch.resx">
+      <DependentUpon>AVR_UCBatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\Old user controls\Advanced Reminder User controls\AVR_UCFiles.resx">
+      <DependentUpon>AVR_UCFiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\Old user controls\Advanced Reminder User controls\AVR_UCGeneral.resx">
+      <DependentUpon>AVR_UCGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\MaterialUserControls\MaterialRunningTimer.resx">
+      <DependentUpon>MaterialRunningTimer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\MaterialUserControls\MUCDebugMode.resx">
+      <DependentUpon>MUCDebugMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\MaterialUserControls\MUCImportExport.resx">
+      <DependentUpon>MUCImportExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\MaterialUserControls\MUCNewReminder.resx">
+      <DependentUpon>MUCNewReminder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\MaterialUserControls\MUCReminderItem.resx">
+      <DependentUpon>MUCReminderItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\MaterialUserControls\MUCReminders.resx">
+      <DependentUpon>MUCReminders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\MaterialUserControls\MUCResizePopup.resx">
+      <DependentUpon>MUCResizePopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\MaterialUserControls\MUCSettings.resx">
+      <DependentUpon>MUCSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\MaterialUserControls\MUCSound.resx">
+      <DependentUpon>MUCSound.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\MaterialUserControls\MUCSupport.resx">
+      <DependentUpon>MUCSupport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\MaterialUserControls\MUCTheme.resx">
+      <DependentUpon>MUCTheme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\MaterialUserControls\MUCTimer.resx">
+      <DependentUpon>MUCTimer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\Old user controls\RunningTimer.resx">
+      <DependentUpon>RunningTimer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\Old user controls\UCDebugMode.resx">
+      <DependentUpon>UCDebugMode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\Old user controls\UCImportExport.resx">
+      <DependentUpon>UCImportExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\Old user controls\UCNewReminder.resx">
+      <DependentUpon>UCNewReminder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\Old user controls\UCReminderItem.resx">
+      <DependentUpon>UCReminderItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\Old user controls\UCReminders.resx">
+      <DependentUpon>UCReminders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\Old user controls\UCResizePopup.resx">
+      <DependentUpon>UCResizePopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\Old user controls\UCSound.resx">
+      <DependentUpon>UCSound.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\Old user controls\UCSupport.resx">
+      <DependentUpon>UCSupport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\Old user controls\UCTheme.resx">
+      <DependentUpon>UCTheme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\Old user controls\UCTimer.resx">
+      <DependentUpon>UCTimer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User controls\Old user controls\UCSettings.resx">
+      <DependentUpon>UCSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RemindMe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RemindMe.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2windows2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sound2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RemindMeImport.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\resize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\test icon.png" />
+    <None Include="Resources\TestIconBlack.png" />
+    <None Include="Resources\SaveIconBlack.png" />
+    <None Include="Resources\reset.png" />
+    <None Include="Resources\RemindMe1.png" />
+    <None Include="Resources\ImportIcon2.png" />
+    <None Include="Resources\arrow.png" />
+    <None Include="Resources\email1.png" />
+    <None Include="Resources\loadingGif.gif" />
+    <EmbeddedResource Include="External_DLL\Bunifu_UI_v1.5.3.dll" />
+    <Content Include="External_DLL\HtmlRenderer.dll" />
+    <Content Include="External_DLL\HtmlRenderer.WinForms.dll" />
+    <Content Include="External_DLL\OSVersionInfo.dll" />
+    <None Include="icons\light\lightningBolt.png" />
+    <None Include="icons\black\www.png" />
+    <None Include="icons\dark\wwwDark.png" />
+    <None Include="icons\light\wwwLight.png" />
+    <None Include="img\.png_icons\RemindMeZzz.png" />
+    <None Include="img\.ico_icons\RemindMeIcon.ico" />
+    <None Include="img\.png_icons\RemindMe.png" />
+    <None Include="img\.png_icons\RemindMeTimer.png" />
+    <Content Include="RemindMeIcon.ico" />
+    <None Include="Resources\hide.png" />
+    <None Include="Resources\show.png" />
+    <None Include="Resources\bug.png" />
+    <None Include="Resources\debug.png" />
+    <None Include="Resources\bell.png" />
+    <None Include="Resources\Bell2.png" />
+    <None Include="Resources\Bellwhite.png" />
+    <None Include="Resources\Settingswhite.png" />
+    <None Include="Resources\Resizewhite.png" />
+    <None Include="Resources\Emailwhite.png" />
+    <None Include="Resources\RemindMeTimer.png" />
+    <None Include="Resources\Repeatwhite.png" />
+    <None Include="Resources\Play.png" />
+    <None Include="Resources\RemindMeSettingsNew.png" />
+    <None Include="Resources\close white.png" />
+    <None Include="Resources\Document_Accept.png" />
+    <None Include="Resources\Document_Close.png" />
+    <None Include="Resources\Arrow_back.png" />
+    <None Include="Resources\Plus_white.png" />
+    <None Include="Resources\Bin_white.png" />
+    <None Include="Resources\Edit_white.png" />
+    <None Include="Resources\Enable_white.png" />
+    <None Include="Resources\Cancel_white.png" />
+    <None Include="Resources\Check_white.png" />
+    <None Include="Resources\Save_white.png" />
+    <None Include="Resources\Save_white1.png" />
+    <None Include="Resources\Reset_White.png" />
+    <None Include="Resources\loading.gif" />
+    <None Include="Resources\Sound_white.png" />
+    <None Include="Resources\Stop.png" />
+    <None Include="Resources\file.png" />
+    <None Include="Resources\FileFolder.png" />
+    <None Include="Resources\Program_white1.png" />
+    <None Include="Resources\Bracers_white.png" />
+    <None Include="Resources\calendarWhite.png" />
+    <None Include="Resources\calendarWhite1.png" />
+    <None Include="Resources\pause%402x1.png" />
+    <None Include="Resources\turnedOff.png" />
+    <None Include="Resources\turnedOn.png" />
+    <None Include="Resources\turnedOffTwo.png" />
+    <None Include="Resources\gearWhite.png" />
+    <None Include="Resources\PreviousWhite.png" />
+    <None Include="Resources\NextWhite.png" />
+    <None Include="Resources\show1.png" />
+    <None Include="Resources\RemindMeZzz.png" />
+    <None Include="Resources\NextGray.png" />
+    <None Include="Resources\NextGray1.png" />
+    <None Include="Resources\PreviousGray.png" />
+    <None Include="Resources\PreviousGray1.png" />
+    <None Include="Resources\NextGray2.png" />
+    <None Include="Resources\EditPenWhite.png" />
+    <None Include="Resources\RedLoading.gif" />
+    <None Include="Resources\RemindMe.gif" />
+    <None Include="Resources\NoReminders.png" />
+    <None Include="Resources\NoReminders2.png" />
+    <None Include="Resources\RemindMeGradient.png" />
+    <None Include="Resources\information-icon-6.jpg" />
+    <None Include="Resources\Edit_Disabled.png" />
+    <None Include="Resources\Bin_Disabled.png" />
+    <None Include="Resources\gearDisabled.png" />
+    <None Include="Resources\RemindMeDb.png" />
+    <None Include="Resources\user.png" />
+    <None Include="Resources\error.png" />
+    <None Include="Resources\copy.png" />
+    <None Include="Resources\copy1.png" />
+    <None Include="Resources\sendmessage.png" />
+    <None Include="Resources\preview_eye_white.png" />
+    <None Include="Resources\duplicate1.png" />
+    <None Include="Resources\duplicatetooltip.png" />
+    <None Include="Resources\hide1.png" />
+    <None Include="Resources\zzz1.png" />
+    <None Include="Resources\zzzCancel1.png" />
+    <None Include="Resources\skip forward1.png" />
+    <None Include="Resources\Permanentely_binWhite.png" />
+    <None Include="Resources\Permanentely_bintooltip.png" />
+    <None Include="Resources\preview_eye1.png" />
+    <None Include="Resources\preview_eye2.png" />
+    <None Include="Resources\preview_eyewhiteish.png" />
+    <None Include="Resources\whiteeye.png" />
+    <None Include="Resources\back.png" />
+    <None Include="Resources\Arrow_back1.png" />
+    <None Include="Resources\ColourPalletteWhite.png" />
+    <None Include="Resources\ColourPalette21.png" />
+    <None Include="Resources\ColourPallette2.png" />
+    <None Include="Resources\palette.png" />
+    <None Include="Resources\write.png" />
+    <None Include="Resources\speed.png" />
+    <None Include="Resources\Minus_white.png" />
+    <None Include="Resources\icons8-test-tube-32.png" />
+    <None Include="Resources\icons8-test-tube-32_white.png" />
+    <None Include="Resources\test_tube_white.png" />
+    <None Include="Resources\new.png" />
+    <None Include="Resources\old.png" />
+    <None Include="Resources\img_326384.png" />
+    <Content Include="x64\SQLite.Interop.dll" />
+    <Content Include="x86\SQLite.Interop.dll" />
+    <None Include="Resources\gray.jpg" />
+    <None Include="Resources\ColourPallette.png" />
+    <None Include="Resources\ColourPalette2.png" />
+    <None Include="Resources\if_color-palette_sticker_68516.png" />
+    <None Include="Resources\if_sound_107193.png" />
+    <None Include="Resources\if_sound_115787.png" />
+    <None Include="Resources\if_resize_62244.png" />
+    <None Include="Resources\if_mail_115714.png" />
+    <None Include="Resources\if_14_Add_106230.png" />
+    <None Include="Resources\if_notes_add_103660.png" />
+    <None Include="Resources\if_add_126583.png" />
+    <None Include="Resources\bin.png" />
+    <None Include="Resources\edit_pen.png" />
+    <None Include="Resources\enable switch.png" />
+    <None Include="Resources\export.png" />
+    <None Include="Resources\ExportIcon.png" />
+    <None Include="Resources\ImportIcon.png" />
+    <None Include="Resources\ImportIcon1.png" />
+    <None Include="Resources\import.png" />
+    <None Include="Resources\if_Check_circle_2202263.png" />
+    <None Include="Resources\if_cancel_216128.png" />
+    <None Include="Resources\RevertIcon.png" />
+    <None Include="Resources\dark-green-check-mark-hi.png" />
+    <None Include="Resources\preview_eye.png" />
+    <None Include="Resources\DimGray.png" />
+    <None Include="Resources\prev.png" />
+    <None Include="Resources\export_black.png" />
+    <None Include="Resources\duplicate.png" />
+    <None Include="Resources\zzz.png" />
+    <None Include="Resources\zzzCancel.png" />
+    <None Include="Resources\skip forward.png" />
+    <None Include="Resources\Permanentely_bin.png" />
+    <None Include="Resources\if_arrow-back_216437.png" />
+    <None Include="Resources\play%402x.png" />
+    <None Include="Resources\stop%402x.png" />
+    <None Include="Resources\pause%402x.png" />
+    <None Include="Resources\if_dot-more-menu-hide_2205199.png" />
+    <None Include="Resources\if_070_Minus_183199.png" />
+    <None Include="Resources\bbuttonEDIT2.png" />
+    <None Include="Resources\2arrows.png" />
+    <None Include="Resources\2ArrowsUp.png" />
+    <None Include="Resources\err.png" />
+    <Content Include="Version history.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business Logic Layer\Business Logic Layer.csproj">
+      <Project>{84c1de31-81cb-43c5-9717-2d20f7c6b43e}</Project>
+      <Name>Business Logic Layer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Database.Entity\Database.Entity.csproj">
+      <Project>{b15cf13c-05db-4346-adb0-704b0756c1e9}</Project>
+      <Name>Database.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MaterialSkin\MaterialSkin.csproj">
+      <Project>{0490685f-50a3-401f-9553-2f3ff6aa1a21}</Project>
+      <Name>MaterialSkin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.112.0\build\net45\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.112.0\build\net45\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.112.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.112.0\build\net45\System.Data.SQLite.Core.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
