@@ -1,116 +1,126 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Diagnostics;
-using System.IO;
-using Business_Logic_Layer;
-using System.Threading;
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
 
-namespace RemindMe
-{
-    public partial class UCDebugMode : UserControl
-    {
-        List<string> localCacheList = new List<string>();
-        public UCDebugMode()
-        {
-            InitializeComponent();
-        }
-      
-
-        private void btnOpenErrorPrompt_Click(object sender, EventArgs e)
-        {
-            BLIO.Log("btnOpenErrorPrompt_Click");
-            ExceptionPopup pop = new ExceptionPopup(new ReminderException("Test",null), "This is a test error in debug mode");
-            pop.Show();
-        }
-
-        private void btnAppdataFolder_Click(object sender, EventArgs e)
-        {
-            BLIO.Log("btnAppdataFolder_Click");
-            Process.Start(Path.GetDirectoryName(IOVariables.errorLog));
-        }
-
-        private void tmrDetails_Tick(object sender, EventArgs e)
-        {                        
-            if (this.Visible)            
-                SetMemory();            
-        }
-
-        private void UCDebugMode_Load(object sender, EventArgs e)
-        {            
-            tmrDetails.Start();
-            tmrLog.Start();
-            localCacheList.AddRange(BLIO.systemLog);            
-        }
-
-        /// <summary>
-        /// Returns memory usage
-        /// </summary>
-        /// <returns></returns>
-        private void SetMemory()
-        {
-            new Thread(() =>
-            {
-                PerformanceCounter pc = new PerformanceCounter();
-                pc.CategoryName = "Process";
-                pc.CounterName = "Working Set - Private";
-                pc.InstanceName = Process.GetCurrentProcess().ProcessName;
-
-                lblMemoryUsage.Invoke((MethodInvoker)(() =>
-                {
-                    lblMemoryUsage.Text = (Convert.ToInt32(pc.NextValue()) / (int)(1024)) / 1000 + " Mb";
-                }));
-
-            }).Start();            
-        }
-
-        private void bunifuFlatButton2_Click(object sender, EventArgs e)
-        {
-            string text = RemindMePrompt.ShowText("Enter a message");
-
-            if(!string.IsNullOrWhiteSpace(text))
-                RemindMeMessageFormManager.MakeMessagePopup(text, 11);
-            else
-                RemindMeMessageFormManager.MakeMessagePopup("This is a test.", 4);
-        }
-
-        private void tmrLog_Tick(object sender, EventArgs e)
-        {
-            if (this.Visible)
-            {                                
-                if(localCacheList.Count != BLIO.systemLog.Count)
-                {
-                    tbSystemLog.Clear();                    
-                    tbSystemLog.AppendText(string.Join(Environment.NewLine, BLIO.systemLog));
-
-                    localCacheList.Clear();
-                    localCacheList.AddRange(BLIO.systemLog);
-                }
-            }
-        }
-
-        private void UCDebugMode_VisibleChanged(object sender, EventArgs e)
-        {
-            BLIO.Log("Showing debug mode");
-        }
-
-        private void btnCheckUpdate_Click(object sender, EventArgs e)
-        {
-            BLIO.Log("btnCheckUpdate_Click");
-            new RemindMeUpdater().UpdateRemindMe();
-        }
-
-        private void btnRequery_Click(object sender, EventArgs e)
-        {
-            //Copy the contents of the textbox to the system clipboard                  
-            Clipboard.SetText(tbSystemLog.Text);
-            BLIO.Log("Copied system log to clipboard");
-        }
-    }
-}
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="tmrDetails.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="tmrLog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>124, 17</value>
+  </metadata>
+</root>
